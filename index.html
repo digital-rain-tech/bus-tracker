@@ -14,18 +14,23 @@
         }
 
         :root {
-            --bg: #000;
-            --card-bg: #1c1c1e;
-            --text: #fff;
-            --text-secondary: #8e8e93;
-            --accent: #0a84ff;
-            --success: #30d158;
-            --warning: #ff9f0a;
+            --bg: #ffe4ec;
+            --card-bg: #fff0f5;
+            --text: #5c3a4d;
+            --text-secondary: #a67c8a;
+            --accent: #ff6b9d;
+            --success: #ff4757;
+            --warning: #ffa502;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-            background: var(--bg);
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,182,193,0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,218,185,0.4) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255,240,245,0.6) 0%, transparent 70%),
+                var(--bg);
+            background-attachment: fixed;
             color: var(--text);
             min-height: 100vh;
             padding: 60px 16px 20px;
@@ -39,12 +44,45 @@
             padding: 60px 16px 16px;
             background: linear-gradient(180deg, var(--bg) 0%, transparent 100%);
             z-index: 100;
+            text-align: center;
         }
 
         h1 {
             font-size: 28px;
             font-weight: 700;
             margin-bottom: 4px;
+        }
+
+        .desert-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .desert-bg span {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .desert-bg span:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .desert-bg span:nth-child(2) { top: 30%; right: 10%; animation-delay: 1s; }
+        .desert-bg span:nth-child(3) { top: 50%; left: 8%; animation-delay: 2s; }
+        .desert-bg span:nth-child(4) { top: 70%; right: 5%; animation-delay: 3s; }
+        .desert-bg span:nth-child(5) { top: 85%; left: 15%; animation-delay: 4s; }
+        .desert-bg span:nth-child(6) { top: 15%; right: 20%; animation-delay: 5s; }
+        .desert-bg span:nth-child(7) { top: 60%; left: 25%; animation-delay: 2.5s; }
+        .desert-bg span:nth-child(8) { top: 40%; right: 25%; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .subtitle {
@@ -73,6 +111,7 @@
 
         .tab.active {
             background: var(--accent);
+            color: white;
         }
 
         .tab:active {
@@ -91,7 +130,7 @@
             color: white;
             font-size: 20px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(255,107,157,0.4);
         }
 
         .route-card {
@@ -99,6 +138,7 @@
             border-radius: 16px;
             padding: 16px;
             margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(92,58,77,0.1);
         }
 
         .route-header {
@@ -106,6 +146,17 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
+        }
+
+        .eta-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            box-shadow: 0 1px 4px rgba(92,58,77,0.08);
         }
 
         .route-number {
@@ -150,11 +201,12 @@
         }
 
         .eta-time.now {
-            color: var(--success);
+            color: #ff2d55;
+            font-weight: 700;
         }
 
         .eta-time.soon {
-            color: var(--warning);
+            color: #ff6b9d;
         }
 
         .eta-label {
@@ -178,6 +230,17 @@
     </style>
 </head>
 <body>
+    <div class="desert-bg">
+        <span>🌵</span>
+        <span>🏜️</span>
+        <span>🌴</span>
+        <span>🦎</span>
+        <span>🐫</span>
+        <span>🌅</span>
+        <span>🌵</span>
+        <span>🦂</span>
+    </div>
+
     <div class="header">
         <h1>Next Bus</h1>
         <p class="subtitle">NR332 Ma Wan ↔ Kwai Fong</p>
